@@ -5,7 +5,7 @@ void setup() {
   root = new Branch(1, 0, 6);
 }
 
-void draw(){
+void draw() {
   background(255);
   root.update(width/2, height/2);
 }
@@ -32,20 +32,20 @@ class Branch {
       }
     }
   }
-  void update(int x, int y){
+  void update(int x, int y) {
     this.x = x;
     this.y = y;
     angle += rotChange;
     endx = x + (int) (pow(maxLevels - level, 0.5) * 80 * cos(radians(angle)));
     endy = y + (int) (pow(maxLevels - level, 0.5) * 80 * sin(radians(angle)));
     if (level < maxLevels) {
-      for (Branch child: children){
+      for (Branch child : children) {
         child.update(endx, endy);
       }
     }
     drawBranch();
   }
-  void drawBranch(){
+  void drawBranch() {
     fill(255);
     stroke(0, alpha/2);
     strokeWeight(strokeW);

@@ -1,15 +1,8 @@
 Branch trunk;
 void setup() {
   size(800, 600);
-  trunk = new Branch(1, 0, 1, 80, -90);
-}
-
-void draw(){
-  if(keyPressed)
-    trunk = new Branch(1, 0, 1, 80, -90);
-  background(255);
-  trunk.update(width/2, height+100);
-  trunk.drawLeaves();
+  smooth();
+  render();
 }
 
 int maxLevels = 8;
@@ -70,5 +63,17 @@ class Branch {
       }
     }
   }
+}
+
+void render(){
+  trunk = new Branch(1, 0, 1, 80, -90);
+  background(255);
+  trunk.update(width/2, height+100);
+  trunk.drawLeaves();
+}
+
+void draw(){
+  if (keyPressed)
+    render();
 }
 
